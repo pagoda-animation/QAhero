@@ -26,11 +26,11 @@
     "orientation": "portrait"
   },
   "startScene": "e3984936-98fa-4926-917c-a5deb65e755d",
-  "title": "q-a-game",
+  "title": "QAHero",
   "webOrientation": "portrait",
   "wechatgame": {
     "REMOTE_SERVER_ROOT": "",
-    "appid": "wx6ac3f5090a6b99c5",
+    "appid": "",
     "isSubdomain": false,
     "orientation": "portrait",
     "subContext": ""

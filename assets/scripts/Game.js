@@ -30,7 +30,7 @@ cc.Class({
             type: cc.Node
         },
         // 昵称节点
-        nickname: {
+        nicknameDisplay: {
             default: null,
             type: cc.Node
         },
@@ -45,14 +45,14 @@ cc.Class({
             type: cc.Node
         },
         // 剩余时间节点
-        lastTime: {
+        lastTimeDisplay: {
             default: null,
-            type: cc.Node
+            type: cc.Label
         },
-        // 问题节点
-        question: {
+        // 题目label的引用
+        questionDisplay: {
             default: null,
-            type: cc.Node
+            type: cc.Label
         },
         // 四个选项
         options: []
@@ -60,22 +60,24 @@ cc.Class({
 
     // LIFE-CYCLE CALLBACKS:
 
-    onLoad () {
-        this.centerX = this.bg.x
-        this.centerY = this.bg.y
+    onLoad() {
         this.titles = JSON.parse(jsonStr)
         this.score = 0
+        this.status = 'process'
         this.createOptions()
+
+        // 开始倒计时
+        this.startCountDown(30)
     },
 
     // 生成四个选项
-    createOptions () {
+    createOptions() {
         // 从题库中随机选取一道题
         const index = Math.floor(Math.random() * this.titles.length)
-        const title = this.titles[index]
-        this.question.getComponent(cc.Label).string = title.title
+        const title = this.titles.splice(index, 1)[0]
+        this.questionDisplay.string = title.title
 
-        for (let i = 0; i < 4; i++) {
+        for (let i = 0; i < title.options.length; i++) {
             const newBtn = cc.instantiate(this.btnPrefab)
             this.options.push(newBtn)
             this.node.addChild(newBtn)
@@ -83,31 +85,47 @@ cc.Class({
             newBtn.getComponent('Button').ans = ['A', 'B', 'C', 'D'][i]
 
             // 计算选项的显示位置
-            const x = this.centerX
-            const y = this.question.y - this.question.height / 2 - newBtn.height / 2 - 40 - (newBtn.height / 2 + 40) * i
+            const x = 0
+            const y = this.questionDisplay.node.y - this.questionDisplay.node.height / 2 - newBtn.height / 2 - 70 - (newBtn.height / 2 + 70) * i
             newBtn.setPosition(cc.v2(x, y))
 
             // 监听点击事件
             newBtn.on('click', event => {
+                this.progressBar.getComponent('ProgressBar').stop = true
                 if (event.node.getComponent('Button').ans == title.answer) {
-                    console.log('答对了')
                     this.gainScore()
                     event.node.color = new cc.Color(0, 255, 0)
                 } else {
                     event.node.color = new cc.Color(255, 0, 0)
                     const index = 'ABCD'.indexOf(title.answer)
                     this.options[index].color = new cc.Color(0, 255, 0)
+                    this.status = 'fail'
                 }
+                
+                // 延时一秒后切换题目
                 setTimeout(() => {
+                    if (this.status == 'fail') {
+                        this.gameOver()
+                    }
                     this.destroyOptions()
                     this.createOptions()
+                    this.startCountDown(30 - Math.floor(this.score / 25) * 5)
                 }, 1000)
             })
         }
     },
 
+    // 开始倒计时
+    startCountDown(t) {
+        const progressBar = this.progressBar.getComponent('ProgressBar')
+        progressBar.game = this
+        progressBar.stop = false
+        progressBar.passTime = 0
+        progressBar.totalTime = t
+    },
+
     // 摧毁选项
-    destroyOptions () {
+    destroyOptions() {
         for (let i = 0; i < this.options.length; i++) {
             this.options[i].destroy()
         }
@@ -115,15 +133,21 @@ cc.Class({
     },
 
     // 获取分数
-    gainScore () {
+    gainScore() {
         this.score += 1
         // 更新 scoreDisplay Label 的文字
         this.scoreDisplay.string = `${this.score} 分`
     },
 
-    start () {
+    // 游戏结束
+    gameOver() {
+        console.log('你输了！')
+        cc.director.loadScene('game')
+    },
+
+    start() {
 
     },
 
-    // update (dt) {},
+    // update(dt) {},
 });
