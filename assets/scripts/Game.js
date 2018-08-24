@@ -75,7 +75,7 @@ cc.Class({
                     type: 'jpg'
                 }, (err, tex) => {
                     if (tex) { 
-                        const spriteFrame = new cc.SpriteFrame(tex, cc.Rect(0, 0, 200, 200))
+                        const spriteFrame = new cc.SpriteFrame(tex, cc.Rect(0, 0, tex.width, tex.height))
                         this.avatar.getComponent(cc.Sprite).spriteFrame = spriteFrame
                     } else if (err) {
                         console.log('err', err)
