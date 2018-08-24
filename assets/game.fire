@@ -41,8 +41,8 @@
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 0.5614583333333331,
-      "y": 0.5614583333333331,
+      "x": 0.40255306181277645,
+      "y": 0.40255306181277645,
       "z": 1
     },
     "_quat": {
@@ -568,7 +568,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 96.71,
+      "width": 85.03,
       "height": 30
     },
     "_anchorPoint": {
@@ -614,8 +614,8 @@
     "_srcBlendFactor": 1,
     "_dstBlendFactor": 771,
     "_useOriginalSize": false,
-    "_string": "Suevily",
-    "_N$string": "Suevily",
+    "_string": "Player",
+    "_N$string": "Player",
     "_fontSize": 30,
     "_lineHeight": 30,
     "_enableWrapText": true,
@@ -1017,7 +1017,7 @@
       "__id__": 11
     },
     "nicknameDisplay": {
-      "__id__": 13
+      "__id__": 14
     },
     "scoreDisplay": {
       "__id__": 16

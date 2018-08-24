@@ -32,7 +32,7 @@ cc.Class({
         // 昵称节点
         nicknameDisplay: {
             default: null,
-            type: cc.Node
+            type: cc.Label
         },
         // 分数label的引用
         scoreDisplay: {
@@ -64,6 +64,26 @@ cc.Class({
         this.titles = JSON.parse(jsonStr)
         this.score = 0
         this.status = 'process'
+
+        console.log(this.avatar.getComponent(cc.Sprite))
+        wx.getUserInfo({
+            success: function (res) {
+                console.log(res.userInfo)
+                this.nicknameDisplay.string = res.userInfo.nickName
+                cc.loader.load({
+                    url: res.userInfo.avatarUrl,
+                    type: 'jpg'
+                }, (err, tex) => {
+                    if (tex) { 
+                        const spriteFrame = new cc.SpriteFrame(tex, cc.Rect(0, 0, 200, 200))
+                        this.avatar.getComponent(cc.Sprite).spriteFrame = spriteFrame
+                    } else if (err) {
+                        console.log('err', err)
+                    }
+                })
+            }.bind(this)
+        })
+
         this.createOptions()
 
         // 开始倒计时

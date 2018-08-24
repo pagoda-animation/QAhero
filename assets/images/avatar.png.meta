@@ -6,7 +6,7 @@
   "filterMode": "bilinear",
   "premultiplyAlpha": false,
   "subMetas": {
-    "头像": {
+    "avatar": {
       "ver": "1.0.3",
       "uuid": "73e5b533-b9dd-404d-9b28-94d6e188f5bc",
       "rawTextureUuid": "8fb2accd-1d32-4b3a-8df2-1ee2af6b33d0",
