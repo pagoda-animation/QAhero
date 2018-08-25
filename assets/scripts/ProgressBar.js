@@ -13,6 +13,7 @@ cc.Class({
 
     properties: {
         stop: false,
+        startTime: Date.now() / 1000, // 倒计时开始时间
         passTime: 0, // 已经过的时间 单位：秒
         totalTime: 30 // 倒计时时间 单位：秒
     },
@@ -29,13 +30,16 @@ cc.Class({
 
     update(dt) {
         if (this.progressBar.progress == 0 || this.stop) return
-        this.passTime += dt
+        this.passTime = Date.now() / 1000 - this.startTime
         this.progressBar.progress = 1 - (this.passTime / this.totalTime)
         this.game.lastTimeDisplay.string = Math.floor(this.totalTime - this.passTime)
         if (this.progressBar.progress < 0) {
             this.progressBar.progress = 0
             this.game.lastTimeDisplay.string = 0
-            this.game.gameOver()
+            this.game.showCorrectOption()
+            this.scheduleOnce(() => {
+                this.game.gameOver()
+            }, 1)
         }
     },
 });
