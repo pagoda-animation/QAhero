@@ -158,7 +158,9 @@ cc.Class({
     // 显示正确选项
     showCorrectOption() {
         const index = 'ABCD'.indexOf(this.question.answer)
-        this.options[index].getComponent('Button').button.color = new cc.Color(0, 255, 0)
+        cc.loader.loadRes('images/btn-green', cc.SpriteFrame, (err, spriteFrame) => {
+            this.options[index].getComponent('Button').button.getComponent(cc.Sprite).spriteFrame = spriteFrame
+        })
     },
 
     // 游戏结束
