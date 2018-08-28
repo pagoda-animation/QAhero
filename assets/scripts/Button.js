@@ -21,14 +21,18 @@ cc.Class({
     // onLoad() {},
 
     init() {
-        this.button.color = new cc.Color(255, 255, 255)
+        cc.loader.loadRes('images/btn-white', cc.SpriteFrame, (err, spriteFrame) => {
+            this.button.getComponent(cc.Sprite).spriteFrame = spriteFrame
+        })
         this.button.on('click', () => {
             this.game.progressBar.getComponent('ProgressBar').stop = true
             for (const option of this.game.options) {
                 option.getComponent('Button').button.off('click')
             }
             if (this.correct) {
-                this.button.color = new cc.Color(0, 255, 0)
+                cc.loader.loadRes('images/btn-green', cc.SpriteFrame, (err, spriteFrame) => {
+                    this.button.getComponent(cc.Sprite).spriteFrame = spriteFrame
+                })
                 this.game.gainScore()
                 this.scheduleOnce(() => {
                     this.game.destroyOptions()
@@ -36,7 +40,9 @@ cc.Class({
                     this.game.startCountDown(30 - Math.floor(this.game.score / 25) * 5)
                 }, 1)
             } else {
-                this.button.color = new cc.Color(255, 0, 0)
+                cc.loader.loadRes('images/btn-red', cc.SpriteFrame, (err, spriteFrame) => {
+                    this.button.getComponent(cc.Sprite).spriteFrame = spriteFrame
+                })
                 this.game.showCorrectOption()
                 this.scheduleOnce(() => {
                     this.game.gameOver()
