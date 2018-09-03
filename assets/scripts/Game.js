@@ -168,7 +168,6 @@ cc.Class({
     // 游戏结束
     gameOver() {
         this.destroyOptions()
-        // cc.director.loadScene('Game')
         const dialog = cc.instantiate(this.dialogPrefab)
         this.node.addChild(dialog)
         dialog.setPosition(cc.v2(0, 0))

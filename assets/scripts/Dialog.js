@@ -19,7 +19,11 @@ cc.Class({
 
     // LIFE-CYCLE CALLBACKS:
 
-    // onLoad () {},
+    onLoad () {
+        this.replayBtn.on('click', () => {
+            cc.director.loadScene('Game')
+        })
+    },
 
     start () {
 
