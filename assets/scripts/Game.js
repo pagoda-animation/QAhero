@@ -55,7 +55,7 @@ cc.Class({
         this.renderQuestion()
 
         // 开始倒计时
-        this.startCountDown(1)
+        this.startCountDown(60)
     },
 
     // 调用微信接口获取用户信息
