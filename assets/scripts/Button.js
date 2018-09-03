@@ -25,27 +25,38 @@ cc.Class({
             this.button.getComponent(cc.Sprite).spriteFrame = spriteFrame
         })
         this.button.on('click', () => {
+            // 先让倒计时停一下
             this.game.progressBar.getComponent('ProgressBar').stop = true
+            // 解除点击事件
             for (const option of this.game.options) {
                 option.getComponent('Button').button.off('click')
             }
+            // 正确
             if (this.correct) {
+                // 当前点击按钮变成绿色
                 cc.loader.loadRes('images/btn-green', cc.SpriteFrame, (err, spriteFrame) => {
                     this.button.getComponent(cc.Sprite).spriteFrame = spriteFrame
                 })
+                // 加分
                 this.game.gainScore()
                 this.scheduleOnce(() => {
                     this.game.destroyOptions()
                     this.game.renderQuestion()
-                    this.game.startCountDown(30 - Math.floor(this.game.score / 25) * 5)
+                    this.game.progressBar.getComponent('ProgressBar').stop = false
+                    // this.game.startCountDown(30 - Math.floor(this.game.score / 25) * 5)
                 }, 1)
-            } else {
+            } else { // 错误
+                // 当前点击按钮变成红色
                 cc.loader.loadRes('images/btn-red', cc.SpriteFrame, (err, spriteFrame) => {
                     this.button.getComponent(cc.Sprite).spriteFrame = spriteFrame
                 })
+                // 显示正确选项
                 this.game.showCorrectOption()
                 this.scheduleOnce(() => {
-                    this.game.gameOver()
+                    this.game.destroyOptions()
+                    this.game.renderQuestion()
+                    this.game.progressBar.getComponent('ProgressBar').stop = false
+                    // this.game.gameOver()
                 }, 1)
             }
         })
