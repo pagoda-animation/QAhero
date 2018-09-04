@@ -12,9 +12,7 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        scoreDisplay: cc.Label,
-        replayBtn: cc.Node,
-        rankingListBtn: cc.Node
+        replayBtn: cc.Node
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -22,9 +20,6 @@ cc.Class({
     onLoad () {
         this.replayBtn.on('click', () => {
             cc.director.loadScene('Game')
-        })
-        this.rankingListBtn.on('click', () => {
-            cc.director.loadScene('RankingList')
         })
     },
 

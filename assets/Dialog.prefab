@@ -170,7 +170,7 @@
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
     "_N$overflow": 0,
-    "_id": "19cdHU8etDQKFtD2H6l0lV"
+    "_id": "fbYNvrguBEUad1ZqqYYShx"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -397,7 +397,7 @@
     "_string": "再来一局",
     "_N$string": "再来一局",
     "_fontSize": 45,
-    "_lineHeight": 40,
+    "_lineHeight": 45,
     "_enableWrapText": false,
     "_N$file": null,
     "_isSystemFontUsed": true,
@@ -406,7 +406,7 @@
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
     "_N$overflow": 1,
-    "_id": "61gYJyyJlPP7cljogcKFL9"
+    "_id": "7eOcqpECdKW5As7fu1Zd5T"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -445,7 +445,7 @@
     "_isTrimmedMode": true,
     "_state": 0,
     "_atlas": null,
-    "_id": "af+H3Ppd5Lq47l0M93IJ63"
+    "_id": "4axVZevU1OybF5Jo1/0VHl"
   },
   {
     "__type__": "cc.Button",
@@ -510,7 +510,7 @@
     "_N$target": {
       "__id__": 6
     },
-    "_id": "6flLKYCMlHPZfnbEh6q3VA"
+    "_id": "cfJrmQu3lN1rofJ4vIqR7w"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -540,7 +540,7 @@
     "_segments": 64,
     "_N$alphaThreshold": 0,
     "_N$inverted": false,
-    "_id": "2991e9o2FDHY777F70Klqf"
+    "_id": "ffytr76LdPZIUa7cUT0O9f"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -767,7 +767,7 @@
     "_string": "查看排行榜",
     "_N$string": "查看排行榜",
     "_fontSize": 45,
-    "_lineHeight": 40,
+    "_lineHeight": 45,
     "_enableWrapText": false,
     "_N$file": null,
     "_isSystemFontUsed": true,
@@ -776,7 +776,7 @@
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
     "_N$overflow": 1,
-    "_id": "cfDq/BJGtG2pTIZJ0z/pra"
+    "_id": "edDaFB6o5J/qD0oxvToKuM"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -815,7 +815,7 @@
     "_isTrimmedMode": true,
     "_state": 0,
     "_atlas": null,
-    "_id": "114vC8YcBNY5F/1e0XwYGz"
+    "_id": "c2gRFZSQZIB5cKpLum5i5z"
   },
   {
     "__type__": "cc.Button",
@@ -880,7 +880,7 @@
     "_N$target": {
       "__id__": 16
     },
-    "_id": "71zBfiQ+pGrbvfh+URl7bt"
+    "_id": "7csnY9pI9OMr12eZUcWTId"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -910,7 +910,7 @@
     "_segments": 64,
     "_N$alphaThreshold": 0,
     "_N$inverted": false,
-    "_id": "e4N5otQBhLDatcX9JNHfgj"
+    "_id": "fegqNdablBQZrFdpw8vKsE"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -934,7 +934,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "bbe254c9-8218-41a8-bdd9-57a4dc06b61d"
+      "__uuid__": "32d1f5ec-bbaf-49bb-8d40-4eb312f98795"
     },
     "_type": 0,
     "_sizeMode": 1,
@@ -949,7 +949,7 @@
     "_isTrimmedMode": true,
     "_state": 0,
     "_atlas": null,
-    "_id": "df80EAkHFEoZH2v5M/ewco"
+    "_id": "f70yEksh9CcL7aM2faOjP1"
   },
   {
     "__type__": "c6984wMLQlEs7UFcG2d8S7B",
@@ -968,7 +968,7 @@
     "rankingListBtn": {
       "__id__": 16
     },
-    "_id": "bcSUnKnWJP4rm5pBXoUJQM"
+    "_id": "8dr85yYC9DPZkoMW1bQz6h"
   },
   {
     "__type__": "cc.PrefabInfo",
