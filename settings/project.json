@@ -11,7 +11,7 @@
       true
     ]
   ],
-  "design-resolution-height": 960,
+  "design-resolution-height": 1136,
   "design-resolution-width": 640,
   "excluded-modules": [
     "ParticleSystem",
@@ -22,7 +22,7 @@
     "MotionStreak",
     "EditBox"
   ],
-  "fit-height": true,
+  "fit-height": false,
   "fit-width": false,
   "group-list": [
     "default"
