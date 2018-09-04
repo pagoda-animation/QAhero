@@ -55,7 +55,7 @@ cc.Class({
         this.renderQuestion()
 
         // 开始倒计时
-        this.startCountDown(60)
+        this.startCountDown(10)
     },
 
     // 调用微信接口获取用户信息
@@ -165,13 +165,38 @@ cc.Class({
         })
     },
 
+    // 上报得分
+    uploadScore () {
+        const value = JSON.stringify({
+            wxgame: {
+                score: this.score,
+                update_time: Date.now()
+            }
+        })
+        wx.setUserCloudStorage({
+            KVDataList: [
+                { key: 'score', value }
+            ]
+        })
+    },
+
     // 游戏结束
     gameOver() {
+        // 回收选项按钮
         this.destroyOptions()
+
+        // 创建并显示对话框
         const dialog = cc.instantiate(this.dialogPrefab)
         this.node.addChild(dialog)
         dialog.setPosition(cc.v2(0, 0))
         dialog.getComponent('Dialog').scoreDisplay.string = `本轮得分：${this.score}`
+
+        // 上报得分
+        try {
+            this.uploadScore()
+        } catch (err) {
+            console.log('非微信小游戏环境', err)
+        }
     },
 
     start() {

@@ -199,7 +199,7 @@
     "_skewY": 0,
     "_zIndex": 0,
     "groupIndex": 0,
-    "_id": "32mQojX85Ky6pKnyCq6PAZ"
+    "_id": "bfqW42B2JFFYHrpLsKbJVG"
   },
   {
     "__type__": "cc.Camera",
@@ -221,7 +221,7 @@
     "_depth": -1,
     "_zoomRatio": 1,
     "_targetTexture": null,
-    "_id": "2aqiRhSxdHaIzDRPsw8bpM"
+    "_id": "8ePk0c/AdFcIS7sfdr/nqQ"
   },
   {
     "__type__": "cc.Node",
@@ -400,7 +400,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Label",
+    "_name": "SharedCanvasSprite",
     "_objFlags": 0,
     "_parent": {
       "__id__": 2
@@ -424,8 +424,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 441.67,
-      "height": 50
+      "width": 550,
+      "height": 600
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -435,7 +435,7 @@
     "_position": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 0,
+      "y": 50,
       "z": 0
     },
     "_scale": {
@@ -457,32 +457,33 @@
     "_skewY": 0,
     "_zIndex": 0,
     "groupIndex": 0,
-    "_id": "ccgSq2yDFLoZWJ9P6guqAo"
+    "_id": "b1eCANwOVFlptuKo1n9H9V"
   },
   {
-    "__type__": "cc.Label",
+    "__type__": "cc.Sprite",
     "_name": "",
     "_objFlags": 0,
     "node": {
       "__id__": 9
     },
     "_enabled": true,
-    "_srcBlendFactor": 1,
+    "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_useOriginalSize": false,
-    "_string": "还没做啊啊啊啊啊...",
-    "_N$string": "还没做啊啊啊啊啊...",
-    "_fontSize": 50,
-    "_lineHeight": 50,
-    "_enableWrapText": true,
-    "_N$file": null,
-    "_isSystemFontUsed": true,
-    "_spacingX": 0,
-    "_N$horizontalAlign": 1,
-    "_N$verticalAlign": 1,
-    "_N$fontFamily": "Arial",
-    "_N$overflow": 0,
-    "_id": "abmkp9PpJIXq8OmGDO1nHt"
+    "_spriteFrame": null,
+    "_type": 0,
+    "_sizeMode": 0,
+    "_fillType": 0,
+    "_fillCenter": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_fillStart": 0,
+    "_fillRange": 0,
+    "_isTrimmedMode": true,
+    "_state": 0,
+    "_atlas": null,
+    "_id": "a1lYA7SiNFn7RQxb+MPdhX"
   },
   {
     "__type__": "cc.Node",
@@ -844,6 +845,9 @@
     "_enabled": true,
     "replayBtn": {
       "__id__": 11
+    },
+    "sharedCanvasSprite": {
+      "__id__": 10
     },
     "_id": "82oXuAcuZJoribF6I0Q58D"
   }
