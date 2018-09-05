@@ -167,15 +167,16 @@ cc.Class({
 
     // 上报得分
     uploadScore () {
-        const value = JSON.stringify({
-            wxgame: {
-                score: this.score,
-                update_time: Date.now()
-            }
-        })
+        // const value = JSON.stringify({
+        //     wxgame: {
+        //         score: this.score,
+        //         update_time: Date.now()
+        //     }
+        // })
         wx.setUserCloudStorage({
             KVDataList: [
-                { key: 'score', value }
+                { key: 'score', value: this.score.toString() },
+                { key: 'update_time', value: (Date.now()).toString() }
             ]
         })
     },

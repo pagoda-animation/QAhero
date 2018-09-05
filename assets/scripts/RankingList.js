@@ -33,16 +33,23 @@ cc.Class({
         }
 
         // 监听滑动事件
-        this.node.on(cc.Node.EventType.TOUCH_END, event => {
-            console.log('滑动事件 =>', event)
+        // this.node.on(cc.Node.EventType.TOUCH_END, event => {
+        //     console.log('滑动事件 =>', event)
 
-            // TODO: 计算滑动距离，更新画布
-            // const distance = null
-            // try {
-            //     this.updateRankingList(distance)
-            // } catch (err) {
-            //     console.log('非微信小游戏环境', err)
-            // }
+        //     // TODO: 计算滑动距离，更新画布
+        //     // const distance = null
+        //     // try {
+        //     //     this.updateRankingList(distance)
+        //     // } catch (err) {
+        //     //     console.log('非微信小游戏环境', err)
+        //     // }
+        // })
+        this.node.on('touchmove', function(event) {
+            console.log('delta y =>', event.getDeltaY())
+            wx.postMessage({
+                type: 'scroll',
+                distance: event.getDeltaY()
+            })
         })
     },
 
@@ -50,27 +57,29 @@ cc.Class({
     initRankingList () {
         const openDataContext = wx.getOpenDataContext()
         const sharedCanvas = openDataContext.canvas
-        openDataContext.postMessage({
+        sharedCanvas.width = 500
+        sharedCanvas.height = 750
+        wx.postMessage({
           type: 'initSort',
           key: 'score',
           canvas: {
-              width: 550,
-              height: 600
+              width: 500,
+              height: 750
           }
         })
-        this.tex.initWithElement(sharedCanvas)
-        this.tex.handleLoadedTexture()
-        this.sharedCanvasSprite.spriteFrame = new cc.SpriteFrame(this.tex)
+        // this.tex.initWithElement(sharedCanvas)
+        // this.tex.handleLoadedTexture()
+        // this.sharedCanvasSprite.spriteFrame = new cc.SpriteFrame(this.tex)
     },
 
     // 更新排行榜画布
-    updateRankingList (distance) {
+    updateRankingList () {
         const openDataContext = wx.getOpenDataContext()
         const sharedCanvas = openDataContext.canvas
-        openDataContext.postMessage({
-            type: 'scroll',
-            distance
-        })
+        // openDataContext.postMessage({
+        //     type: 'scroll',
+        //     distance
+        // })
         this.tex.initWithElement(sharedCanvas)
         this.tex.handleLoadedTexture()
         this.sharedCanvasSprite.spriteFrame = new cc.SpriteFrame(this.tex)
@@ -80,5 +89,7 @@ cc.Class({
 
     },
 
-    // update (dt) {},
+    update () {
+        this.updateRankingList()
+    },
 });
