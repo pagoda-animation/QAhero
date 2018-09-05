@@ -109,16 +109,16 @@ class RankListRenderer {
 			keyList: [KEY],
 			success: res => {
 				console.log("wx.getFriendCloudStorage success", res);
-				this.gameDatas = Array.from({length: 50}, function (info, index) {
-					let data = Object.assign({}, res.data[0])
-					let arr = []
-					arr = arr.concat([Object.assign({}, data.KVDataList[0])])
-					// console.log('arr =>', arr)
-					data.KVDataList = arr
-					data.KVDataList[0].value = parseInt(data.KVDataList[0].value, 10) + index
-                    return data
-				})
-				// this.gameDatas = dataSorter(res.data);
+				// this.gameDatas = Array.from({length: 50}, function (info, index) {
+				// 	let data = Object.assign({}, res.data[0])
+				// 	let arr = []
+				// 	arr = arr.concat([Object.assign({}, data.KVDataList[0])])
+				// 	// console.log('arr =>', arr)
+				// 	data.KVDataList = arr
+				// 	data.KVDataList[0].value = parseInt(data.KVDataList[0].value, 10) + index
+         //            return data
+				// })
+				this.gameDatas = dataSorter(res.data);
 				const dataLen = this.gameDatas.length
 				this.offsetY = 0;
 				this.contentHeight = dataLen * ITEM_HEIGHT;
