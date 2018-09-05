@@ -25,6 +25,8 @@ cc.Class({
         lastTimeDisplay: cc.Label,
         // 题目label的引用
         questionDisplay: cc.Label,
+        // 连击文本
+        multiHitDiaplay: cc.Label,
         // 选项按钮预制资源
         btnPrefab: cc.Prefab,
         // 题库
@@ -38,6 +40,7 @@ cc.Class({
     onLoad() {
         this.score = 0
         this.status = 'process'
+        this.multiHit = 0 // 连击效果
 
         try {
             this.requestUserInfo()
@@ -54,7 +57,7 @@ cc.Class({
         this.renderQuestion()
 
         // 开始倒计时
-        this.startCountDown(10)
+        this.startCountDown(60)
     },
 
     // 调用微信接口获取用户信息
@@ -103,6 +106,11 @@ cc.Class({
         } while (!this.question || !this.question.title || !this.question.options || !this.question.answer)
 
         this.questionDisplay.string = this.question.title
+        if (this.question.title.length > 14) {
+            this.questionDisplay.horizontalAlign = 0 // 居左
+        } else {
+            this.questionDisplay.horizontalAlign = 1 // 居中
+        }
 
         for (let i = 0; i < this.question.options.length; i++) {
             const optionBtn = this.createOption()
@@ -114,12 +122,11 @@ cc.Class({
 
             // 计算选项的显示位置
             const x = 0
-            const y = -this.questionDisplay.node.height / 2 - 110 * i
+            const y = - 110 * i
             optionBtn.setPosition(cc.v2(x, y))
 
             // 初始化选按钮
             optionBtn.getComponent('Button').init()
-            
         }
     },
 
@@ -162,6 +169,15 @@ cc.Class({
         cc.loader.loadRes('images/btn-green', cc.SpriteFrame, (err, spriteFrame) => {
             this.options[index].getComponent('Button').button.getComponent(cc.Sprite).spriteFrame = spriteFrame
         })
+    },
+
+    // 显示连击效果
+    showMultiHit () {
+        this.multiHitDiaplay.string = `${this.multiHit}`
+        this.multiHitDiaplay.node.parent.opacity = 255
+        this.scheduleOnce(() => {
+            this.multiHitDiaplay.node.parent.opacity = 0
+        }, 1)
     },
 
     // 上报得分
