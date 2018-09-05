@@ -998,12 +998,12 @@
     "_anchorPoint": {
       "__type__": "cc.Vec2",
       "x": 0.5,
-      "y": 0.5
+      "y": 0
     },
     "_position": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 180,
+      "y": 145,
       "z": 0
     },
     "_scale": {

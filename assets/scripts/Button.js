@@ -39,6 +39,12 @@ cc.Class({
                 })
                 // 加分
                 this.game.gainScore()
+                // 连击
+                this.game.multiHit++
+                if (this.game.multiHit >= 2) {
+                    this.game.showMultiHit()
+                }
+                // 停顿
                 this.scheduleOnce(() => {
                     this.game.destroyOptions()
                     this.game.renderQuestion()
@@ -56,6 +62,8 @@ cc.Class({
                 } catch (err) {
                     console.log('非微信小游戏环境', err)
                 }
+                // 连击
+                this.game.multiHit = 0
                 // 显示正确选项
                 this.game.showCorrectOption()
                 this.scheduleOnce(() => {
