@@ -72,6 +72,11 @@ class RankListRenderer {
                     if (data.key) {
                         KEY = data.key
 					}
+					
+					this.fetchFriendData();
+					break;
+
+				case 'update':
 					wx.getUserCloudStorage({
 						keyList: [KEY],
 						success (res) {
@@ -85,14 +90,12 @@ class RankListRenderer {
 										{ key: 'score', value: `${data.value}`}
 									],
 									success: () => {
-										_self.fetchFriendData();
+										console.log('更新数据成功')
 									},
 									fail () {
-										console.log('上传数据失败')
+										console.log('更新数据失败')
 									}
 								})
-							} else {
-								_self.fetchFriendData();
 							}
 						},
 						fail (res) {
@@ -100,7 +103,6 @@ class RankListRenderer {
 						}
 					})
 					break;
-
 				case 'scroll':
 					if (!this.gameDatas.length) {
 						return;

@@ -170,7 +170,7 @@
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
     "_N$overflow": 0,
-    "_id": "38v/CsN5xEiLxDPcTHs5uN"
+    "_id": "dcQwaMpsZJKpa6i3w0Dh+l"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -406,7 +406,7 @@
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
     "_N$overflow": 1,
-    "_id": "4deaPlk1xAoLIrWgEO/6ML"
+    "_id": "88Nc2CEN5Ce62xemRUpezE"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -445,7 +445,7 @@
     "_isTrimmedMode": true,
     "_state": 0,
     "_atlas": null,
-    "_id": "faOvJ+HjJE7aq0jVXVFxuF"
+    "_id": "17K3F26VNBUI9xYeS8J426"
   },
   {
     "__type__": "cc.Button",
@@ -510,7 +510,7 @@
     "_N$target": {
       "__id__": 6
     },
-    "_id": "62ZCuq13RFZK3DDYHudpcQ"
+    "_id": "2f+Pl+ed5GZoaL5x2Myh/J"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -540,7 +540,7 @@
     "_segments": 64,
     "_N$alphaThreshold": 0,
     "_N$inverted": false,
-    "_id": "13r82n2y1IPJMCtXtJwFjV"
+    "_id": "53eRdVSeBHfJW5/QphVhRj"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -776,7 +776,7 @@
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
     "_N$overflow": 1,
-    "_id": "56yjsl6XxHWbEsS0MHWGHF"
+    "_id": "09ECCEwkBJbbbd9UGwksjC"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -815,7 +815,7 @@
     "_isTrimmedMode": true,
     "_state": 0,
     "_atlas": null,
-    "_id": "bcnSBcEHFDbI5S75pvcied"
+    "_id": "58RN2pHEFJFI8sKkQQJakK"
   },
   {
     "__type__": "cc.Button",
@@ -880,7 +880,7 @@
     "_N$target": {
       "__id__": 16
     },
-    "_id": "24x/oNRgZG8pxI19LrN6Kc"
+    "_id": "18OiNp/6pCMrMJzgIA52A2"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -910,7 +910,7 @@
     "_segments": 64,
     "_N$alphaThreshold": 0,
     "_N$inverted": false,
-    "_id": "ef+XYkuLNFIJ3QvBiOkV9t"
+    "_id": "6fLyrXqm9JFo545+EZrxlk"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -949,7 +949,7 @@
     "_isTrimmedMode": true,
     "_state": 0,
     "_atlas": null,
-    "_id": "25gofytJ5GeJbi68RcaaMT"
+    "_id": "1222gauOZIn5qxYmqUxCxH"
   },
   {
     "__type__": "c6984wMLQlEs7UFcG2d8S7B",
@@ -968,7 +968,7 @@
     "rankingListBtn": {
       "__id__": 16
     },
-    "_id": "75sGk3boJHRZo1PdGUi/u7"
+    "_id": "5bqRo8AI9GqYQSo7/I+vr+"
   },
   {
     "__type__": "cc.PrefabInfo",

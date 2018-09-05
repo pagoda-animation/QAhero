@@ -7,7 +7,6 @@
 // Learn life-cycle callbacks:
 //  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/life-cycle-callbacks.html
 //  - [English] http://www.cocos2d-x.org/docs/creator/en/scripting/life-cycle-callbacks.html
-const State = require('state')
 cc.Class({
     extends: cc.Component,
 
@@ -51,25 +50,17 @@ cc.Class({
         wx.postMessage({
           type: 'initSort',
           key: 'score',
-          value: State.score,
           canvas: {
               width: 500,
               height: 750
           }
         })
-        // this.tex.initWithElement(sharedCanvas)
-        // this.tex.handleLoadedTexture()
-        // this.sharedCanvasSprite.spriteFrame = new cc.SpriteFrame(this.tex)
     },
 
     // 更新排行榜画布
     updateRankingList () {
         const openDataContext = wx.getOpenDataContext()
         const sharedCanvas = openDataContext.canvas
-        // openDataContext.postMessage({
-        //     type: 'scroll',
-        //     distance
-        // })
         this.tex.initWithElement(sharedCanvas)
         this.tex.handleLoadedTexture()
         this.sharedCanvasSprite.spriteFrame = new cc.SpriteFrame(this.tex)
