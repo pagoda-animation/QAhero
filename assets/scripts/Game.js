@@ -178,6 +178,7 @@ cc.Class({
         this.scheduleOnce(() => {
             this.multiHitDiaplay.node.parent.opacity = 0
         }, 1)
+        this.multiHitDiaplay.node.parent.getComponent(cc.Animation).play()
     },
 
     // 上报得分

@@ -97,10 +97,10 @@
     "_level": 1,
     "_components": [
       {
-        "__id__": 30
+        "__id__": 31
       },
       {
-        "__id__": 31
+        "__id__": 32
       }
     ],
     "_prefab": null,
@@ -1072,7 +1072,11 @@
     ],
     "_active": true,
     "_level": 2,
-    "_components": [],
+    "_components": [
+      {
+        "__id__": 30
+      }
+    ],
     "_prefab": null,
     "_opacity": 0,
     "_color": {
@@ -1100,8 +1104,8 @@
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 1,
-      "y": 1,
+      "x": 1.51,
+      "y": 1.51,
       "z": 1
     },
     "_rotationX": 0,
@@ -1290,6 +1294,25 @@
     "_N$fontFamily": "Arial",
     "_N$overflow": 0,
     "_id": "d9LfmVQPJGA6uWN9LMsOHf"
+  },
+  {
+    "__type__": "cc.Animation",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 25
+    },
+    "_enabled": true,
+    "_defaultClip": {
+      "__uuid__": "13d8c1fd-44fd-43c7-b5b5-1ca8edc059b4"
+    },
+    "_clips": [
+      {
+        "__uuid__": "13d8c1fd-44fd-43c7-b5b5-1ca8edc059b4"
+      }
+    ],
+    "playOnLoad": false,
+    "_id": "ecRn3PnSFAvp0jkZIIFVIH"
   },
   {
     "__type__": "cc.Canvas",
