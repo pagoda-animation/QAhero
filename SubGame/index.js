@@ -58,6 +58,7 @@ class RankListRenderer {
     }
 
 	listen() {
+		let _self = this
 		wx.onMessage(data => {
 			switch (data.type) {
 				case 'initSort':
@@ -70,8 +71,34 @@ class RankListRenderer {
 					// 设置向微信获取数据的 key 值
                     if (data.key) {
                         KEY = data.key
-                    }
-					this.fetchFriendData();
+					}
+					wx.getUserCloudStorage({
+						keyList: [KEY],
+						success (res) {
+							console.log('userCloudStorage =>', res)
+							let scoreData = res.KVDataList.find(kvdata => kvdata.key === KEY )
+							console.log('scoreData =>', scoreData)
+							if (data.value > Number(scoreData.value)) {
+								// 上传较大的分数
+								wx.setUserCloudStorage({
+									KVDataList: [
+										{ key: 'score', value: `${data.value}`}
+									],
+									success: () => {
+										_self.fetchFriendData();
+									},
+									fail () {
+										console.log('上传数据失败')
+									}
+								})
+							} else {
+								_self.fetchFriendData();
+							}
+						},
+						fail (res) {
+							console.log('get userCloudStorage fail =>', res)
+						}
+					})
 					break;
 
 				case 'scroll':
