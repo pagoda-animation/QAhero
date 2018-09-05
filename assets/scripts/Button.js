@@ -50,6 +50,12 @@ cc.Class({
                 cc.loader.loadRes('images/btn-red', cc.SpriteFrame, (err, spriteFrame) => {
                     this.button.getComponent(cc.Sprite).spriteFrame = spriteFrame
                 })
+                // 振动
+                try {
+                    wx.vibrateLong()
+                } catch (err) {
+                    console.log('非微信小游戏环境', err)
+                }
                 // 显示正确选项
                 this.game.showCorrectOption()
                 this.scheduleOnce(() => {

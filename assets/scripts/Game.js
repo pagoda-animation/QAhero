@@ -55,7 +55,7 @@ cc.Class({
         this.renderQuestion()
 
         // 开始倒计时
-        this.startCountDown(10)
+        this.startCountDown(60)
     },
 
     // 调用微信接口获取用户信息
@@ -104,6 +104,11 @@ cc.Class({
         } while (!this.question || !this.question.title || !this.question.options || !this.question.answer)
 
         this.questionDisplay.string = this.question.title
+        if (this.question.title.length > 14) {
+            this.questionDisplay.horizontalAlign = 0 // 居左
+        } else {
+            this.questionDisplay.horizontalAlign = 1 // 居中
+        }
 
         for (let i = 0; i < this.question.options.length; i++) {
             const optionBtn = this.createOption()

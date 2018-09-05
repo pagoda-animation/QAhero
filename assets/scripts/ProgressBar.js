@@ -29,11 +29,16 @@ cc.Class({
     },
 
     update(dt) {
-        if (this.progressBar.progress == 0 || this.stop) return
+        // 暂停倒计时期间，startTime也需要延后，以保证重新开始倒计时后时间不会跳跃
+        if (this.progressBar.progress == 0 || this.stop) {
+            this.startTime += dt
+            return
+        }
         this.passTime = Date.now() / 1000 - this.startTime
         this.progressBar.progress = 1 - (this.passTime / this.totalTime)
         this.game.lastTimeDisplay.string = Math.floor(this.totalTime - this.passTime)
-        if (this.progressBar.progress < 0) {
+        //倒计时结束
+        if (this.progressBar.progress <= 0) {
             this.progressBar.progress = 0
             this.game.lastTimeDisplay.string = 0
             this.game.showCorrectOption()
