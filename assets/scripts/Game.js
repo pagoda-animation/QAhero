@@ -7,7 +7,8 @@
 // Learn life-cycle callbacks:
 //  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/life-cycle-callbacks.html
 //  - [English] http://www.cocos2d-x.org/docs/creator/en/scripting/life-cycle-callbacks.html
-
+const State = require('state')
+cc.log('state =>', State.score)
 cc.Class({
     extends: cc.Component,
 
@@ -183,18 +184,13 @@ cc.Class({
 
     // 上报得分
     uploadScore () {
-        // const value = JSON.stringify({
-        //     wxgame: {
-        //         score: this.score,
-        //         update_time: Date.now()
-        //     }
+        State.score = this.score
+        // wx.setUserCloudStorage({
+        //     KVDataList: [
+        //         { key: 'score', value: this.score.toString() },
+        //         { key: 'update_time', value: (Date.now()).toString() }
+        //     ]
         // })
-        wx.setUserCloudStorage({
-            KVDataList: [
-                { key: 'score', value: this.score.toString() },
-                { key: 'update_time', value: (Date.now()).toString() }
-            ]
-        })
     },
 
     // 游戏结束

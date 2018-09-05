@@ -7,7 +7,7 @@
 // Learn life-cycle callbacks:
 //  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/life-cycle-callbacks.html
 //  - [English] http://www.cocos2d-x.org/docs/creator/en/scripting/life-cycle-callbacks.html
-
+const State = require('state')
 cc.Class({
     extends: cc.Component,
 
@@ -33,17 +33,6 @@ cc.Class({
         }
 
         // 监听滑动事件
-        // this.node.on(cc.Node.EventType.TOUCH_END, event => {
-        //     console.log('滑动事件 =>', event)
-
-        //     // TODO: 计算滑动距离，更新画布
-        //     // const distance = null
-        //     // try {
-        //     //     this.updateRankingList(distance)
-        //     // } catch (err) {
-        //     //     console.log('非微信小游戏环境', err)
-        //     // }
-        // })
         this.node.on('touchmove', function(event) {
             console.log('delta y =>', event.getDeltaY())
             wx.postMessage({
@@ -62,6 +51,7 @@ cc.Class({
         wx.postMessage({
           type: 'initSort',
           key: 'score',
+          value: State.score,
           canvas: {
               width: 500,
               height: 750
