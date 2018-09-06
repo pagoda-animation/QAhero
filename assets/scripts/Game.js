@@ -23,6 +23,8 @@ cc.Class({
         progressBar: cc.Node,
         // 剩余时间节点
         lastTimeDisplay: cc.Label,
+        // 题目Layout
+        questionLayout: cc.Node,
         // 题目label的引用
         questionDisplay: cc.Label,
         // 连击文本
@@ -115,19 +117,18 @@ cc.Class({
         for (let i = 0; i < this.question.options.length; i++) {
             const optionBtn = this.createOption()
             this.options.push(optionBtn)
-            this.node.addChild(optionBtn)
+            this.questionLayout.addChild(optionBtn)
+
             optionBtn.getComponent('Button').game = this
             optionBtn.getComponent('Button').label.string = this.question.options[i]
             optionBtn.getComponent('Button').correct = Boolean(['A', 'B', 'C', 'D'][i] == this.question.answer)
 
-            // 计算选项的显示位置
-            const x = 0
-            const y = - 110 * i
-            optionBtn.setPosition(cc.v2(x, y))
-
             // 初始化选按钮
             optionBtn.getComponent('Button').init()
         }
+
+        // 切换题目动画
+        this.questionLayout.getComponent(cc.Animation).play('switch-question-in')
     },
 
     // 创建选项按钮
@@ -173,11 +174,7 @@ cc.Class({
 
     // 显示连击效果
     showMultiHit () {
-        this.multiHitDiaplay.string = `${this.multiHit}`
-        this.multiHitDiaplay.node.parent.opacity = 255
-        this.scheduleOnce(() => {
-            this.multiHitDiaplay.node.parent.opacity = 0
-        }, 1)
+        this.multiHitDiaplay.string = `× ${this.multiHit}`
         this.multiHitDiaplay.node.parent.getComponent(cc.Animation).play()
     },
 

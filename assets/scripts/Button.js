@@ -18,7 +18,9 @@ cc.Class({
 
     // LIFE-CYCLE CALLBACKS:
 
-    // onLoad() {},
+    onLoad() {
+        this.animation = this.node.getComponent(cc.Animation)
+    },
 
     init() {
         cc.loader.loadRes('images/btn-white', cc.SpriteFrame, (err, spriteFrame) => {
@@ -49,7 +51,6 @@ cc.Class({
                     this.game.destroyOptions()
                     this.game.renderQuestion()
                     this.game.progressBar.getComponent('ProgressBar').stop = false
-                    // this.game.startCountDown(30 - Math.floor(this.game.score / 25) * 5)
                 }, 1)
             } else { // 错误
                 // 当前点击按钮变成红色
@@ -57,6 +58,7 @@ cc.Class({
                     this.button.getComponent(cc.Sprite).spriteFrame = spriteFrame
                 })
                 // 振动
+                this.animation.play('error-vibrate')
                 try {
                     wx.vibrateLong()
                 } catch (err) {
@@ -70,7 +72,6 @@ cc.Class({
                     this.game.destroyOptions()
                     this.game.renderQuestion()
                     this.game.progressBar.getComponent('ProgressBar').stop = false
-                    // this.game.gameOver()
                 }, 1)
             }
         })
