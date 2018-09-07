@@ -206,7 +206,7 @@ cc.Class({
     showCorrectOption() {
         const index = 'ABCD'.indexOf(this.question.answer)
         cc.loader.loadRes('images/btn-green', cc.SpriteFrame, (err, spriteFrame) => {
-            this.options[index].getComponent('Button').button.getComponent(cc.Sprite).spriteFrame = spriteFrame
+            this.options[index].getComponent(cc.Sprite).spriteFrame = spriteFrame
         })
     },
 
