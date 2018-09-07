@@ -93,9 +93,14 @@ cc.Class({
 
     // 显示登录授权框
     showAuthDialog () {
+        // getUserInfo按钮要手动适配各类屏幕大小
+        // 这里以IPhone6屏幕为基准，计算出所有屏幕相对IPhone6屏幕宽高的比例系数，并取其小值作为主要比例
         const { windowWidth, windowHeight } = wx.getSystemInfoSync()
-        const btnWidth = windowWidth * 0.65
-        const btnHeight = btnWidth * 0.2353
+        const kWidth = windowWidth / 375
+        const kHeight = windowHeight / 667
+        const kMain = Math.min(kWidth, kHeight)
+        const btnWidth = 220 * kMain
+        const btnHeight = 45 * kMain
 
         this.authDialog.getComponent(cc.Animation).play('dialog-show')
 
@@ -105,15 +110,15 @@ cc.Class({
                 text: '登录',
                 style: {
                     left: windowWidth / 2 - btnWidth / 2,
-                    top: windowHeight * 0.6,
+                    top: 400 * kHeight,
                     width: btnWidth,
                     height: btnHeight,
                     lineHeight: btnHeight,
                     backgroundColor: '#1668b2',
                     color: '#ffffff',
                     textAlign: 'center',
-                    fontSize: 25,
-                    borderRadius: 30
+                    fontSize: 25 * kMain,
+                    borderRadius: 30 * kMain
                 }
             })
             button.onTap((res) => {
@@ -197,7 +202,7 @@ cc.Class({
 
     // 获取分数
     gainScore() {
-        this.score += 1
+        this.score += this.multiHit
         // 更新 scoreDisplay Label 的文字
         this.scoreDisplay.string = `${this.score} 分`
     },

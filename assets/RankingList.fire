@@ -41,8 +41,8 @@
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 0.1382042253521127,
-      "y": 0.1382042253521127,
+      "x": 0.4401270906690141,
+      "y": 0.4401270906690141,
       "z": 1
     },
     "_quat": {
@@ -52,7 +52,7 @@
       "z": 0,
       "w": 1
     },
-    "_localZOrder": 211,
+    "_zIndex": 0,
     "groupIndex": 0,
     "autoReleaseAssets": false,
     "_id": "6c30bc20-a617-451a-9582-4acb0474ef0c"
@@ -79,19 +79,16 @@
       },
       {
         "__id__": 11
-      },
-      {
-        "__id__": 16
       }
     ],
     "_active": true,
     "_level": 1,
     "_components": [
       {
-        "__id__": 18
+        "__id__": 16
       },
       {
-        "__id__": 19
+        "__id__": 17
       }
     ],
     "_prefab": null,
@@ -136,7 +133,7 @@
     },
     "_skewX": 0,
     "_skewY": 0,
-    "_localZOrder": 212,
+    "_zIndex": 0,
     "groupIndex": 0,
     "_id": "2e0Yz4UzZBa6/zyP6hb/Lq"
   },
@@ -197,7 +194,7 @@
     },
     "_skewX": 0,
     "_skewY": 0,
-    "_localZOrder": 213,
+    "_zIndex": 0,
     "groupIndex": 0,
     "_id": "bfqW42B2JFFYHrpLsKbJVG"
   },
@@ -280,7 +277,7 @@
     },
     "_skewX": 0,
     "_skewY": 0,
-    "_localZOrder": 214,
+    "_zIndex": 0,
     "groupIndex": 0,
     "_id": "903Os8vo1H+axXdp5vZZY2"
   },
@@ -369,7 +366,7 @@
     },
     "_skewX": 0,
     "_skewY": 0,
-    "_localZOrder": 215,
+    "_zIndex": 0,
     "groupIndex": 0,
     "_id": "bdKnZnrjhM1bRoDV3gmYFt"
   },
@@ -455,7 +452,7 @@
     },
     "_skewX": 0,
     "_skewY": 0,
-    "_localZOrder": 216,
+    "_zIndex": 0,
     "groupIndex": 0,
     "_id": "b1eCANwOVFlptuKo1n9H9V"
   },
@@ -549,7 +546,7 @@
     },
     "_skewX": 0,
     "_skewY": 0,
-    "_localZOrder": 217,
+    "_zIndex": 0,
     "groupIndex": 0,
     "_id": "69tcO36AZPXLaQ2nlUYxo0"
   },
@@ -610,7 +607,7 @@
     },
     "_skewX": 0,
     "_skewY": 0,
-    "_localZOrder": 218,
+    "_zIndex": 0,
     "groupIndex": 0,
     "_id": "22WZ9JUZ1OrZejEHr38AUh"
   },
@@ -625,8 +622,8 @@
     "_srcBlendFactor": 1,
     "_dstBlendFactor": 771,
     "_useOriginalSize": false,
-    "_string": "我还要玩",
-    "_N$string": "我还要玩",
+    "_string": "返回游戏",
+    "_N$string": "返回游戏",
     "_fontSize": 45,
     "_lineHeight": 45,
     "_enableWrapText": false,
@@ -650,7 +647,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "b9bd4d07-0efd-4c32-9123-659bb3f90890"
+      "__uuid__": "07e12733-34ac-4fba-b30c-09410d40c11c"
     },
     "_type": 1,
     "_sizeMode": 0,
@@ -709,9 +706,7 @@
       "b": 255,
       "a": 255
     },
-    "_N$normalSprite": {
-      "__uuid__": "b9bd4d07-0efd-4c32-9123-659bb3f90890"
-    },
+    "_N$normalSprite": null,
     "_N$pressedSprite": {
       "__uuid__": "e9ec654c-97a2-4787-9325-e6a10375219a"
     },
@@ -731,92 +726,6 @@
       "__id__": 11
     },
     "_id": "83MT806M5Fpr8rs7s0OxLI"
-  },
-  {
-    "__type__": "cc.Node",
-    "_name": "Tip",
-    "_objFlags": 0,
-    "_parent": {
-      "__id__": 2
-    },
-    "_children": [],
-    "_active": true,
-    "_level": 2,
-    "_components": [
-      {
-        "__id__": 17
-      }
-    ],
-    "_prefab": null,
-    "_opacity": 255,
-    "_color": {
-      "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
-      "a": 255
-    },
-    "_contentSize": {
-      "__type__": "cc.Size",
-      "width": 162,
-      "height": 10
-    },
-    "_anchorPoint": {
-      "__type__": "cc.Vec2",
-      "x": 0.5,
-      "y": 0.5
-    },
-    "_position": {
-      "__type__": "cc.Vec3",
-      "x": 0,
-      "y": -493,
-      "z": 0
-    },
-    "_scale": {
-      "__type__": "cc.Vec3",
-      "x": 1,
-      "y": 1,
-      "z": 1
-    },
-    "_rotationX": 0,
-    "_rotationY": 0,
-    "_quat": {
-      "__type__": "cc.Quat",
-      "x": 0,
-      "y": 0,
-      "z": 0,
-      "w": 1
-    },
-    "_skewX": 0,
-    "_skewY": 0,
-    "_localZOrder": 219,
-    "groupIndex": 0,
-    "_id": "aa9mGjrkRFnLV4vLJaA+1q"
-  },
-  {
-    "__type__": "cc.Label",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 16
-    },
-    "_enabled": true,
-    "_srcBlendFactor": 1,
-    "_dstBlendFactor": 771,
-    "_useOriginalSize": false,
-    "_string": "小声bb：文案都是乱来的，别吐槽我",
-    "_N$string": "小声bb：文案都是乱来的，别吐槽我",
-    "_fontSize": 10,
-    "_lineHeight": 10,
-    "_enableWrapText": true,
-    "_N$file": null,
-    "_isSystemFontUsed": true,
-    "_spacingX": 0,
-    "_N$horizontalAlign": 1,
-    "_N$verticalAlign": 1,
-    "_N$fontFamily": "Arial",
-    "_N$overflow": 0,
-    "_id": "3eGdpX1IlGMqpFlorvrPEM"
   },
   {
     "__type__": "cc.Canvas",

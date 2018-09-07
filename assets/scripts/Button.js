@@ -41,10 +41,10 @@ cc.Class({
                 cc.loader.loadRes('images/btn-green', cc.SpriteFrame, (err, spriteFrame) => {
                     this.node.getComponent(cc.Sprite).spriteFrame = spriteFrame
                 })
-                // 加分
-                this.game.gainScore()
                 // 连击
                 this.game.multiHit++
+                // 加分
+                this.game.gainScore()
                 if (this.game.multiHit >= 2) {
                     this.game.showMultiHit()
                 }
