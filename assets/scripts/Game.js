@@ -33,8 +33,10 @@ cc.Class({
         btnPrefab: cc.Prefab,
         // 题库
         questionsList: cc.JsonAsset,
-        // 游戏结束弹框预制资源
-        dialogPrefab: cc.Prefab
+        // 授权登录弹框
+        authDialog: cc.Node,
+        // 游戏结束弹框
+        dialog: cc.Node
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -43,12 +45,6 @@ cc.Class({
         this.score = 0
         this.status = 'process'
         this.multiHit = 0 // 连击效果
-
-        try {
-            this.requestUserInfo()
-        } catch(err) {
-            console.log('非微信小游戏环境', err)
-        }
 
         // 从题库中随机选取一组题
         this.index = Math.floor(Math.random() * this.questionsList.json.length)
@@ -60,6 +56,12 @@ cc.Class({
 
         // 开始倒计时
         this.startCountDown(60)
+
+        try {
+            this.requestUserInfo()
+        } catch(err) {
+            console.log('非微信小游戏环境', err)
+        }
     },
 
     // 调用微信接口获取用户信息
@@ -79,11 +81,47 @@ cc.Class({
                     }
                 })
             }.bind(this),
-            fail(err) {
+            fail: function (err) {
                 console.log('获取用户信息出错', err)
-                wx.openSetting()
-            }
+                this.questionDisplay.string = '未登录'
+                this.destroyOptions()
+                this.progressBar.getComponent('ProgressBar').stop = true
+                this.showAuthDialog()
+            }.bind(this)
         })
+    },
+
+    // 显示登录授权框
+    showAuthDialog () {
+        const { windowWidth, windowHeight } = wx.getSystemInfoSync()
+        const btnWidth = windowWidth * 0.65
+        const btnHeight = btnWidth * 0.2353
+
+        this.authDialog.getComponent(cc.Animation).play('dialog-show')
+
+        this.scheduleOnce(() => {
+            let button = wx.createUserInfoButton({
+                type: 'text',
+                text: '登录',
+                style: {
+                    left: windowWidth / 2 - btnWidth / 2,
+                    top: windowHeight * 0.6,
+                    width: btnWidth,
+                    height: btnHeight,
+                    lineHeight: btnHeight,
+                    backgroundColor: '#1668b2',
+                    color: '#ffffff',
+                    textAlign: 'center',
+                    fontSize: 25,
+                    borderRadius: 30
+                }
+            })
+            button.onTap((res) => {
+                button.hide()
+                this.authDialog.setPosition(cc.v2(0, 1180))
+                cc.director.loadScene('Game')
+            })
+        }, 0.15)
     },
 
     // 随机选取题目并渲染
@@ -191,11 +229,8 @@ cc.Class({
         // 回收选项按钮
         this.destroyOptions()
 
-        // 创建并显示对话框
-        const dialog = cc.instantiate(this.dialogPrefab)
-        this.node.addChild(dialog)
-        dialog.setPosition(cc.v2(0, 0))
-        dialog.getComponent('Dialog').scoreDisplay.string = `本轮得分：${this.score}`
+        // 显示对话框
+        this.dialog.getComponent('Dialog').init(this.score)
 
         // 上报得分
         try {
