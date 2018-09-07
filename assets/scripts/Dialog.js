@@ -28,6 +28,12 @@ cc.Class({
         })
     },
 
+    // 弹框初始化
+    init (score) {
+        this.scoreDisplay.string = `本轮得分：${score}`
+        this.node.getComponent(cc.Animation).play('dialog-show')
+    },
+
     start () {
 
     },

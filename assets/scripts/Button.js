@@ -12,7 +12,6 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        button: cc.Node,
         label: cc.Label
     },
 
@@ -23,26 +22,29 @@ cc.Class({
     },
 
     init() {
+        // 初始化为白色按钮
         cc.loader.loadRes('images/btn-white', cc.SpriteFrame, (err, spriteFrame) => {
-            this.button.getComponent(cc.Sprite).spriteFrame = spriteFrame
+            this.node.getComponent(cc.Sprite).spriteFrame = spriteFrame
         })
-        this.button.on('click', () => {
+
+        // 注册点击事件
+        this.node.on('click', () => {
             // 先让倒计时停一下
             this.game.progressBar.getComponent('ProgressBar').stop = true
-            // 解除点击事件
+            // 解除所有选项按钮的点击事件
             for (const option of this.game.options) {
-                option.getComponent('Button').button.off('click')
+                option.off('click')
             }
             // 正确
             if (this.correct) {
                 // 当前点击按钮变成绿色
                 cc.loader.loadRes('images/btn-green', cc.SpriteFrame, (err, spriteFrame) => {
-                    this.button.getComponent(cc.Sprite).spriteFrame = spriteFrame
+                    this.node.getComponent(cc.Sprite).spriteFrame = spriteFrame
                 })
-                // 加分
-                this.game.gainScore()
                 // 连击
                 this.game.multiHit++
+                // 加分
+                this.game.gainScore()
                 if (this.game.multiHit >= 2) {
                     this.game.showMultiHit()
                 }
@@ -55,7 +57,7 @@ cc.Class({
             } else { // 错误
                 // 当前点击按钮变成红色
                 cc.loader.loadRes('images/btn-red', cc.SpriteFrame, (err, spriteFrame) => {
-                    this.button.getComponent(cc.Sprite).spriteFrame = spriteFrame
+                    this.node.getComponent(cc.Sprite).spriteFrame = spriteFrame
                 })
                 // 振动
                 this.animation.play('error-vibrate')
@@ -68,6 +70,7 @@ cc.Class({
                 this.game.multiHit = 0
                 // 显示正确选项
                 this.game.showCorrectOption()
+                // 停顿
                 this.scheduleOnce(() => {
                     this.game.destroyOptions()
                     this.game.renderQuestion()

@@ -51,8 +51,8 @@ cc.Class({
           type: 'initSort',
           key: 'score',
           canvas: {
-              width: 500,
-              height: 750
+              width: this.sharedCanvasSprite.node.width,
+              height: this.sharedCanvasSprite.node.height
           }
         })
     },
