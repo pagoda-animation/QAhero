@@ -18,7 +18,9 @@ cc.Class({
 
     // LIFE-CYCLE CALLBACKS:
 
-    // onLoad() {},
+    onLoad() {
+        this.animation = this.node.getComponent(cc.Animation)
+    },
 
     init() {
         cc.loader.loadRes('images/btn-white', cc.SpriteFrame, (err, spriteFrame) => {
@@ -39,24 +41,37 @@ cc.Class({
                 })
                 // 加分
                 this.game.gainScore()
+                // 连击
+                this.game.multiHit++
+                if (this.game.multiHit >= 2) {
+                    this.game.showMultiHit()
+                }
+                // 停顿
                 this.scheduleOnce(() => {
                     this.game.destroyOptions()
                     this.game.renderQuestion()
                     this.game.progressBar.getComponent('ProgressBar').stop = false
-                    // this.game.startCountDown(30 - Math.floor(this.game.score / 25) * 5)
                 }, 1)
             } else { // 错误
                 // 当前点击按钮变成红色
                 cc.loader.loadRes('images/btn-red', cc.SpriteFrame, (err, spriteFrame) => {
                     this.button.getComponent(cc.Sprite).spriteFrame = spriteFrame
                 })
+                // 振动
+                this.animation.play('error-vibrate')
+                try {
+                    wx.vibrateLong()
+                } catch (err) {
+                    console.log('非微信小游戏环境', err)
+                }
+                // 连击
+                this.game.multiHit = 0
                 // 显示正确选项
                 this.game.showCorrectOption()
                 this.scheduleOnce(() => {
                     this.game.destroyOptions()
                     this.game.renderQuestion()
                     this.game.progressBar.getComponent('ProgressBar').stop = false
-                    // this.game.gameOver()
                 }, 1)
             }
         })

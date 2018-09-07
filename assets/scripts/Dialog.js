@@ -23,6 +23,9 @@ cc.Class({
         this.replayBtn.on('click', () => {
             cc.director.loadScene('Game')
         })
+        this.rankingListBtn.on('click', () => {
+            cc.director.loadScene('RankingList')
+        })
     },
 
     start () {

@@ -7,7 +7,6 @@
 // Learn life-cycle callbacks:
 //  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/life-cycle-callbacks.html
 //  - [English] http://www.cocos2d-x.org/docs/creator/en/scripting/life-cycle-callbacks.html
-
 cc.Class({
     extends: cc.Component,
 
@@ -24,8 +23,12 @@ cc.Class({
         progressBar: cc.Node,
         // 剩余时间节点
         lastTimeDisplay: cc.Label,
+        // 题目Layout
+        questionLayout: cc.Node,
         // 题目label的引用
         questionDisplay: cc.Label,
+        // 连击文本
+        multiHitDiaplay: cc.Label,
         // 选项按钮预制资源
         btnPrefab: cc.Prefab,
         // 题库
@@ -39,6 +42,7 @@ cc.Class({
     onLoad() {
         this.score = 0
         this.status = 'process'
+        this.multiHit = 0 // 连击效果
 
         try {
             this.requestUserInfo()
@@ -104,24 +108,27 @@ cc.Class({
         } while (!this.question || !this.question.title || !this.question.options || !this.question.answer)
 
         this.questionDisplay.string = this.question.title
+        if (this.question.title.length > 14) {
+            this.questionDisplay.horizontalAlign = 0 // 居左
+        } else {
+            this.questionDisplay.horizontalAlign = 1 // 居中
+        }
 
         for (let i = 0; i < this.question.options.length; i++) {
             const optionBtn = this.createOption()
             this.options.push(optionBtn)
-            this.node.addChild(optionBtn)
+            this.questionLayout.addChild(optionBtn)
+
             optionBtn.getComponent('Button').game = this
             optionBtn.getComponent('Button').label.string = this.question.options[i]
             optionBtn.getComponent('Button').correct = Boolean(['A', 'B', 'C', 'D'][i] == this.question.answer)
 
-            // 计算选项的显示位置
-            const x = 0
-            const y = -this.questionDisplay.node.height / 2 - 110 * i
-            optionBtn.setPosition(cc.v2(x, y))
-
             // 初始化选按钮
             optionBtn.getComponent('Button').init()
-            
         }
+
+        // 切换题目动画
+        this.questionLayout.getComponent(cc.Animation).play('switch-question-in')
     },
 
     // 创建选项按钮
@@ -165,13 +172,37 @@ cc.Class({
         })
     },
 
+    // 显示连击效果
+    showMultiHit () {
+        this.multiHitDiaplay.string = `× ${this.multiHit}`
+        this.multiHitDiaplay.node.parent.getComponent(cc.Animation).play()
+    },
+
+    // 上报得分
+    uploadScore () {
+        wx.postMessage({
+            type: 'update',
+            value: this.score
+        })
+    },
+
     // 游戏结束
     gameOver() {
+        // 回收选项按钮
         this.destroyOptions()
+
+        // 创建并显示对话框
         const dialog = cc.instantiate(this.dialogPrefab)
         this.node.addChild(dialog)
         dialog.setPosition(cc.v2(0, 0))
         dialog.getComponent('Dialog').scoreDisplay.string = `本轮得分：${this.score}`
+
+        // 上报得分
+        try {
+            this.uploadScore()
+        } catch (err) {
+            console.log('非微信小游戏环境', err)
+        }
     },
 
     start() {
