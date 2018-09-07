@@ -12,6 +12,7 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
+        bar: cc.Node, // 进度条
         stop: false,
         startTime: Date.now() / 1000, // 倒计时开始时间
         passTime: 0, // 已经过的时间 单位：秒
@@ -21,6 +22,7 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad() {
+        this.flag = true // 用于判断动画是否已经在播放
         this.progressBar = this.node.getComponent(cc.ProgressBar)
     },
 
@@ -34,11 +36,23 @@ cc.Class({
             this.startTime += dt
             return
         }
+
         this.passTime = Date.now() / 1000 - this.startTime
         this.progressBar.progress = 1 - (this.passTime / this.totalTime)
         this.game.lastTimeDisplay.string = Math.floor(this.totalTime - this.passTime)
+
+        // 催命特效
+        if (this.totalTime - this.passTime <= 11 && this.flag) {
+            this.flag = false
+            this.game.lastTimeDisplay.node.color = new cc.Color(255, 0, 0)
+            this.bar.color = new cc.Color(255, 0, 0)
+            this.game.lastTimeDisplay.node.getComponent(cc.Animation).play('count-down')
+        }
+
         //倒计时结束
         if (this.progressBar.progress <= 0) {
+            this.game.lastTimeDisplay.node.color = new cc.Color(255, 255, 255)
+            this.game.lastTimeDisplay.node.getComponent(cc.Animation).stop('count-down')
             this.progressBar.progress = 0
             this.game.lastTimeDisplay.string = 0
             this.game.showCorrectOption()
