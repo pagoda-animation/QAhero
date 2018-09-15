@@ -223,9 +223,9 @@ class RankListRenderer {
 		//背景颜色
 		if (rank % 2 == 1) {
 			// ctx.fillStyle = "#FBF7E4";
-			ctx.fillStyle = "#C6C3B4";
+			ctx.fillStyle = "#33333350";
 		} else {
-            ctx.fillStyle = '#ffffff'
+            ctx.fillStyle = '#99999950'
 		}
 		ctx.fillRect(0, itemGapY, CANVAS_WIDTH, ITEM_HEIGHT);
 

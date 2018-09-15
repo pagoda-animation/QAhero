@@ -41,8 +41,8 @@
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 0.31556127572938536,
-      "y": 0.31556127572938536,
+      "x": 0.3019366197183099,
+      "y": 0.3019366197183099,
       "z": 1
     },
     "_quat": {
@@ -52,7 +52,7 @@
       "z": 0,
       "w": 1
     },
-    "_zIndex": 0,
+    "_localZOrder": 42,
     "groupIndex": 0,
     "autoReleaseAssets": false,
     "_id": "6c30bc20-a617-451a-9582-4acb0474ef0c"
@@ -133,7 +133,7 @@
     },
     "_skewX": 0,
     "_skewY": 0,
-    "_zIndex": 0,
+    "_localZOrder": 43,
     "groupIndex": 0,
     "_id": "2e0Yz4UzZBa6/zyP6hb/Lq"
   },
@@ -194,7 +194,7 @@
     },
     "_skewX": 0,
     "_skewY": 0,
-    "_zIndex": 0,
+    "_localZOrder": 44,
     "groupIndex": 0,
     "_id": "bfqW42B2JFFYHrpLsKbJVG"
   },
@@ -277,7 +277,7 @@
     },
     "_skewX": 0,
     "_skewY": 0,
-    "_zIndex": 0,
+    "_localZOrder": 45,
     "groupIndex": 0,
     "_id": "903Os8vo1H+axXdp5vZZY2"
   },
@@ -369,7 +369,7 @@
     },
     "_skewX": 0,
     "_skewY": 0,
-    "_zIndex": 0,
+    "_localZOrder": 46,
     "groupIndex": 0,
     "_id": "bdKnZnrjhM1bRoDV3gmYFt"
   },
@@ -485,7 +485,7 @@
     },
     "_skewX": 0,
     "_skewY": 0,
-    "_zIndex": 0,
+    "_localZOrder": 47,
     "groupIndex": 0,
     "_id": "b1eCANwOVFlptuKo1n9H9V"
   },
@@ -609,7 +609,7 @@
     },
     "_skewX": 0,
     "_skewY": 0,
-    "_zIndex": 0,
+    "_localZOrder": 48,
     "groupIndex": 0,
     "_id": "69tcO36AZPXLaQ2nlUYxo0"
   },
@@ -670,7 +670,7 @@
     },
     "_skewX": 0,
     "_skewY": 0,
-    "_zIndex": 0,
+    "_localZOrder": 49,
     "groupIndex": 0,
     "_id": "22WZ9JUZ1OrZejEHr38AUh"
   },
@@ -685,8 +685,8 @@
     "_srcBlendFactor": 1,
     "_dstBlendFactor": 771,
     "_useOriginalSize": false,
-    "_string": "返回游戏",
-    "_N$string": "返回游戏",
+    "_string": "进入游戏",
+    "_N$string": "进入游戏",
     "_fontSize": 45,
     "_lineHeight": 45,
     "_enableWrapText": false,
