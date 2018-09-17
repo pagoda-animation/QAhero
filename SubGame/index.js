@@ -83,7 +83,7 @@ class RankListRenderer {
 							console.log('userCloudStorage =>', res)
 							let scoreData = res.KVDataList.find(kvdata => kvdata.key === KEY )
 							console.log('scoreData =>', scoreData)
-							if (data.value > Number(scoreData.value)) {
+              if (!scoreData || data.value > Number(scoreData.value)) {
 								// 上传较大的分数
 								wx.setUserCloudStorage({
 									KVDataList: [
