@@ -223,14 +223,14 @@ class RankListRenderer {
 		//背景颜色
 		if (rank % 2 == 1) {
 			// ctx.fillStyle = "#FBF7E4";
-			ctx.fillStyle = "#33333350";
+			ctx.fillStyle = "rgba(51,51,51,0.25)";
 		} else {
-            ctx.fillStyle = '#99999950'
+      ctx.fillStyle = 'rgba(144,144,144,0.25)'
 		}
 		ctx.fillRect(0, itemGapY, CANVAS_WIDTH, ITEM_HEIGHT);
 
 		//名次
-		ctx.fillStyle = "#777063";
+		ctx.fillStyle = "#ffffff";
 		ctx.textAlign = "right";
 		ctx.baseLine = "middle";
 		ctx.font = "50px Helvetica";
@@ -244,14 +244,14 @@ class RankListRenderer {
 		this.drawAvatar(ctx, data.avatarUrl, avatarX, avatarY, avatarW, avatarH, pageIndex, cb);
 
 		//名字
-		ctx.fillStyle = "#777063";
+		ctx.fillStyle = "#ffffff";
 		ctx.textAlign = "left";
 		ctx.baseLine = "middle";
 		ctx.font = "30px Helvetica";
 		ctx.fillText(nick, 220, 0.6 * ITEM_HEIGHT + itemGapY);
 
 		//分数
-		ctx.fillStyle = "#777063";
+		ctx.fillStyle = "#ffffff";
 		ctx.textAlign = "left";
 		ctx.baseLine = "middle";
 		ctx.font = "30px Helvetica";
